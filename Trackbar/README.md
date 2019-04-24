@@ -14,5 +14,13 @@ Threshold(Trackbar)
   * posB：灰度值
   * WAY： 转换方式
   
-  
+* 示例
+img = cv2.imread("img/1.jpg", 1)
+cv2.namedWindow("window", cv2.WINDOW_NORMAL)
+cv2.imshow("window", img)
+trackbar = Threshold()
+trackbar.createTrackbar("window", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+print(trackbar.getInfo())
 -------------------------------------------------
