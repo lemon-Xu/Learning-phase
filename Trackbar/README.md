@@ -26,41 +26,41 @@ Threshold(Trackbar)
 
 GaussianBlur(Trackbar)
 -----------------------------------------------
-* createTrackbar(window, img):
- * window: 窗口名称
- * img： cv2.imread("srcImg")
- * return: void
+* createTrackbar(window, img)
+	* window: 窗口名称
+	* img： cv2.imread("srcImg")
+	* return: void
  
-* def getInfo(self):
- * return: [kernel, posB]
- * kernel: 核
- * posB: 标准差
+* def getInfo()
+ 	* return: [kernel, posB]
+	* kernel: 核
+	* posB: 标准差
  
 示例
->测试GaussianBlur类
->img = cv2.imread("img/1.jpg", 1)
->cv2.namedWindow("Gaussian", cv2.WINDOW_NORMAL)
->cv2.imshow("Gaussian", img)
->Gaussian = GaussianBlur()
->Gaussian.createTrackbar("Gaussian", img)
->cv2.waitKey(0)
->cv2.destroyAllWindows()
->print(Gaussian.getInfo())
+>测试GaussianBlur类 <br>
+>img = cv2.imread("img/1.jpg", 1) <br>
+>cv2.namedWindow("Gaussian", cv2.WINDOW_NORMAL) <br>
+>cv2.imshow("Gaussian", img) <br>
+>Gaussian = GaussianBlur() <br>
+>Gaussian.createTrackbar("Gaussian", img) <br>
+>cv2.waitKey(0) <br>
+>cv2.destroyAllWindows() <br>
+>print(Gaussian.getInfo()) <br>
 
->测试 GaussianBlur类  ThresholdTrackbar联动
->img = cv2.imread("img/1.jpg", 0)
->cv2.namedWindow("GaussianBlur", cv2.WINDOW_NORMAL)
->cv2.imshow("GaussianBlur", img)
->Gaussian = GaussianBlur()
->Gaussian.createTrackbar("GaussianBlur", img)
->cv2.waitKey(0)
->cv2.destroyAllWindows()
->print(Gaussian.getInfo())
-		
->cv2.namedWindow("threshold", cv2.WINDOW_NORMAL)
->cv2.imshow("threshold", img)
->threshold = Threshold()
->threshold.createTrackbar("threshold", Gaussian.dstImg, isGray=True)
->cv2.waitKey(0)
->cv2.destroyAllWindows()
->print(threshold.getInfo())
+>测试 GaussianBlur类  ThresholdTrackbar联动 <br>
+>img = cv2.imread("img/1.jpg", 0) <br>
+>cv2.namedWindow("GaussianBlur", cv2.WINDOW_NORMAL) <br>
+>cv2.imshow("GaussianBlur", img) <br>
+>Gaussian = GaussianBlur() <br>
+>Gaussian.createTrackbar("GaussianBlur", img) <br>
+>cv2.waitKey(0) <br>
+>cv2.destroyAllWindows() <br>
+>print(Gaussian.getInfo()) <br>
+<br>		
+>cv2.namedWindow("threshold", cv2.WINDOW_NORMAL) <br>
+>cv2.imshow("threshold", img) <br>
+>threshold = Threshold() <br>
+>threshold.createTrackbar("threshold", Gaussian.dstImg, isGray=True) <br>
+>cv2.waitKey(0) <br>
+>cv2.destroyAllWindows() <br>
+>print(threshold.getInfo()) <br>
