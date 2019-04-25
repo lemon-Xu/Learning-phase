@@ -23,6 +23,7 @@ Threshold(Trackbar)
 >cv2.waitKey(0) <br>
 >cv2.destroyAllWindows() <br>
 >print(trackbar.getInfo()) <br>
+
 GaussianBlur(Trackbar)
 -----------------------------------------------
 * createTrackbar(window, img):
@@ -36,7 +37,7 @@ GaussianBlur(Trackbar)
  * posB: 标准差
  
 示例
-# 测试GaussianBlur类
+>测试GaussianBlur类
 >img = cv2.imread("img/1.jpg", 1)
 >cv2.namedWindow("Gaussian", cv2.WINDOW_NORMAL)
 >cv2.imshow("Gaussian", img)
@@ -46,7 +47,7 @@ GaussianBlur(Trackbar)
 >cv2.destroyAllWindows()
 >print(Gaussian.getInfo())
 
-# 测试 GaussianBlur类  ThresholdTrackbar联动
+>测试 GaussianBlur类  ThresholdTrackbar联动
 >img = cv2.imread("img/1.jpg", 0)
 >cv2.namedWindow("GaussianBlur", cv2.WINDOW_NORMAL)
 >cv2.imshow("GaussianBlur", img)
