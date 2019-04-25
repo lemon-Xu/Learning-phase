@@ -56,7 +56,7 @@ GaussianBlur(Trackbar)
 >cv2.waitKey(0) <br>
 >cv2.destroyAllWindows() <br>
 >print(Gaussian.getInfo()) <br>
-<br>		
+><br>		
 >cv2.namedWindow("threshold", cv2.WINDOW_NORMAL) <br>
 >cv2.imshow("threshold", img) <br>
 >threshold = Threshold() <br>
