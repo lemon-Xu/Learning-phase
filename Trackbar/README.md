@@ -8,16 +8,16 @@ Trackbar
 Threshold(Trackbar)
 ----------------------------------------------
 * createTrackbar(window, img, isGray=False)
-  * window：窗口名称
-  * img：cv2.imread("srcImg")
-  * isGray：对要处理的图片进行BGR2GRAY转换
+  * window: 窗口名称
+  * img: cv2.imread("srcImg")
+  * isGray: 对要处理的图片进行BGR2GRAY转换
   * return: void
   
 * getInfo()
   * return: [posA, posB, WAY]
   * posA: 阖值
-  * posB：灰度值
-  * WAY： 转换方式
+  * posB: 灰度值
+  * WAY:  转换方式
   
 示例
 >#1 测试Threshold类
@@ -34,7 +34,7 @@ GaussianBlur(Trackbar)
 -----------------------------------------------
 * createTrackbar(window, img)
 	* window: 窗口名称
-	* img： cv2.imread("srcImg")
+	* img: cv2.imread("srcImg")
 	* return: void
  
 * getInfo()
