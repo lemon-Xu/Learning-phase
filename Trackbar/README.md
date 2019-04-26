@@ -20,7 +20,7 @@ Threshold(Trackbar)
   * WAY： 转换方式
   
 示例
->1 测试Threshold类
+># 1 测试Threshold类
 >img = cv2.imread("img/1.jpg", 1) <br>
 >cv2.namedWindow("window", cv2.WINDOW_NORMAL) <br>
 >cv2.imshow("window", img) <br>
@@ -43,7 +43,7 @@ GaussianBlur(Trackbar)
 	* posB: 标准差
  
 示例
->2 测试GaussianBlur类 <br>
+># 2 测试GaussianBlur类 <br>
 >img = cv2.imread("img/1.jpg", 1) <br>
 >cv2.namedWindow("Gaussian", cv2.WINDOW_NORMAL) <br>
 >cv2.imshow("Gaussian", img) <br>
@@ -53,7 +53,7 @@ GaussianBlur(Trackbar)
 >cv2.destroyAllWindows() <br>
 >print(Gaussian.getInfo()) <br>
 
->4 测试 GaussianBlur类  ThresholdTrackbar联动 <br>
+># 4 测试 GaussianBlur类  ThresholdTrackbar联动 <br>
 >img = cv2.imread("img/1.jpg", 0) <br>
 >cv2.namedWindow("GaussianBlur", cv2.WINDOW_NORMAL) <br>
 >cv2.imshow("GaussianBlur", img) <br>
@@ -85,7 +85,7 @@ Canny(Trackbar)
 	* ratio: 阈值比（最大阈值 / 最小阈值）
 
 示例
->5 测试 Canny类
+># 5 测试 Canny类
 >img = cv2.imread("img/1.jpg", 1) <br>
 >cv2.namedWindow("Canny", cv2.WINDOW_NORMAL) <br>
 >cv2.imshow("Canny", img) <br>
