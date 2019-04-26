@@ -15,7 +15,7 @@ Threshold(Trackbar)
   
 * getInfo()
   * return: [posA, posB, WAY]
-  * posA: 阖值
+  * posA: 阈值
   * posB: 灰度值
   * WAY:  转换方式
   
