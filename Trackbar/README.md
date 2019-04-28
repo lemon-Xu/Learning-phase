@@ -93,3 +93,27 @@ Canny(Trackbar)
 >canny.createTrackbar("Canny", img) <br>
 >cv2.waitKey(0) <br>
 >cv2.destroyAllWindows() <br>
+
+morphologyEx(Trackbar)
+------------------------------------------
+* crreateTrackbar(window, img, isGray=Flase)
+	* window: 窗口名
+	* img: cv2.imread("srcImg")
+	* isGray: 对要处理的图片进行BGR2GRAY格式转换
+	
+* getInfo()
+	* return: MORPH, structuring, kernel]
+	* MORPH: 形态学操作
+	* structuring: 结构化方式
+	* kernel: 核（width, height）
+
+示例
+>img = cv2.imread('img/1.jpg', 1) <br>
+>cv2.namedWindow('morph', cv2.WINDOW_NORMAL) <br>
+>cv2.imshow('morph', img) <br>
+>morph = morphologyEx() <br>
+>morph.createTrackbar('morph', img) <br>
+>cv2.waitKey(0) <br>
+>cv2.destroyAllWindows() <br>
+>print(morph.getInfo()) <br>
+
