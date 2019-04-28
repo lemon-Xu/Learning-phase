@@ -1,10 +1,20 @@
+
+* Trackbar
+	* [Threshold](#Threshold)
+	* [GaussianBlur](#GaussianBlur)
+	* [Canny]（#Canny）
+	* [morphologyEx](#morphologyEx)
+	
+	
 Trackbar
 ==============================================
 * createTrackbar(): 创建轨迹条
 * getInfo(): 得到处理参数 
 * dst(): 返回处理后的图片
 * _callback(): 回调函数
-<span id = "jump">跳转到的位置</span>
+
+
+<span id = "Threshold"></span>
 Threshold(Trackbar)
 ----------------------------------------------
 * createTrackbar(window, img, isGray=False)
@@ -30,6 +40,7 @@ Threshold(Trackbar)
 >cv2.destroyAllWindows() <br>
 >print(trackbar.getInfo()) <br>
 
+<span id = "GaussianBlur"></span>
 GaussianBlur(Trackbar)
 -----------------------------------------------
 * createTrackbar(window, img)
@@ -71,6 +82,7 @@ GaussianBlur(Trackbar)
 >cv2.destroyAllWindows() <br>
 >print(threshold.getInfo()) <br>
 
+<span id = "Canny"></span>
 Canny(Trackbar)
 ---------------------------------------
 * createTrackbar(window, img)
@@ -94,6 +106,7 @@ Canny(Trackbar)
 >cv2.waitKey(0) <br>
 >cv2.destroyAllWindows() <br>
 
+<span id = "morphologyEx"></span>
 morphologyEx(Trackbar)
 ------------------------------------------
 * crreateTrackbar(window, img, isGray=Flase)
@@ -108,6 +121,7 @@ morphologyEx(Trackbar)
 	* kernel: 核（width, height）
 
 示例
+>#6 测试 morphologyEx类 <br>
 >img = cv2.imread('img/1.jpg', 1) <br>
 >cv2.namedWindow('morph', cv2.WINDOW_NORMAL) <br>
 >cv2.imshow('morph', img) <br>
@@ -117,4 +131,4 @@ morphologyEx(Trackbar)
 >cv2.destroyAllWindows() <br>
 >print(morph.getInfo()) <br>
 
-[说明文字](#jump)
+
