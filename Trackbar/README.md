@@ -1,8 +1,9 @@
-
+目录
+---------------
 * Trackbar
 	* [Threshold](#Threshold)
 	* [GaussianBlur](#GaussianBlur)
-	* [Canny]（#Canny）
+	* [Canny](#Canny)
 	* [morphologyEx](#morphologyEx)
 	
 	
