@@ -4,7 +4,7 @@ Trackbar
 * getInfo(): 得到处理参数 
 * dst(): 返回处理后的图片
 * _callback(): 回调函数
-
+<span id = "jump">跳转到的位置</span>
 Threshold(Trackbar)
 ----------------------------------------------
 * createTrackbar(window, img, isGray=False)
@@ -117,3 +117,4 @@ morphologyEx(Trackbar)
 >cv2.destroyAllWindows() <br>
 >print(morph.getInfo()) <br>
 
+[说明文字](#jump)
