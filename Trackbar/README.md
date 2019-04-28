@@ -1,3 +1,9 @@
+欢迎来到Trackbar的文档！
+--------------
+Trackbar用于图像处理的手动调参，用Python3语法写成，依赖于cv2模块 <br>
+Trackbar实现了OpenCV部分图像处理功能 <br>
+Trackbar目前只能处理jpg格式的图片 <br>
+
 目录
 ---------------
 * Trackbar
