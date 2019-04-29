@@ -11,6 +11,7 @@ Trackbar目前只能处理jpg格式的图片 <br>
 	* [GaussianBlur](#GaussianBlur)
 	* [Canny](#Canny)
 	* [morphologyEx](#morphologyEx)
+	* [findContours](#findContours)
 	
 	
 Trackbar
@@ -120,6 +121,7 @@ morphologyEx(Trackbar)
 	* window: 窗口名
 	* img: cv2.imread("srcImg")
 	* isGray: 对要处理的图片进行BGR2GRAY格式转换
+	* return: void
 	
 * getInfo()
 	* return: MORPH, structuring, kernel]
@@ -138,4 +140,35 @@ morphologyEx(Trackbar)
 >cv2.destroyAllWindows() <br>
 >print(morph.getInfo()) <br>
 
-
+<span id = "findContours"></span>
+findContours(Trackbar)
+------------------------------------
+* crreateTrackbar(window, img, isGray=Flase)
+	* window: 窗口名
+	* img: cv2.imread("srcImg")
+	* isGray: 对要处理的图片进行BGR2GRAY格式转换
+	* return: void
+	
+* getInfo()
+	* return: [CV2_RETR, CV2_CHAIN_APPROX]
+	* CV2_RETR: 轮廓检索模式
+	* CV2_CHAIN_APPROX: 轮廓的近似方法
+	
+示例
+>#7 测试findContours类 与 threshold类联动
+>img = cv2.imread("img/1.jpg", 0) <br>
+>cv2.namedWindow("threshold", cv2.WINDOW_NORMAL) <br>
+>cv2.imshow("threshold", img) <br>
+>threshold = Threshold() <br>
+>threshold.createTrackbar("threshold", img, True) <br>
+>cv2.waitKey(0) <br>
+>cv2.destroyAllWindows() <br>
+>print(threshold.getInfo()) <br>
+>
+>cv2.namedWindow('findContours', cv2.WINDOW_NORMAL) <br>
+>cv2.imshow('findContours', threshold.dst()) <br>
+>fc = findContours() <br>
+>fc.createTrackbar('findContours', threshold.dst(), True) <br>
+>cv2.waitKey(0) <br>
+>cv2.destroyAllWindows() <br>
+>print(fc.getInfo()) <br>
