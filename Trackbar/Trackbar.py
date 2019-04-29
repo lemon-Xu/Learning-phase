@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import random
 
 # 0-Trackbar
 class Trackbar():
@@ -129,7 +130,7 @@ class Canny(Trackbar):
 	def createTrackbar(self, window, img):
 		self.window = window
 		cv2.createTrackbar("threshold", window, 0, 500, self._positionThreshold)
-		cv2.createTrackbar("threshold ratio", window, 1, 3, self._positionRatio)
+		cv2.createTrackbar("ratio", window, 1, 3, self._positionRatio)
 		self.img = img
 		
 	def _positionThreshold(self, position):
@@ -179,7 +180,7 @@ class morphologyEx(Trackbar):
 		else:
 			self._cvtColor()
 		cv2.createTrackbar("ksize", self.window, 0, 20, self._positionA)
-		cv2.createTrackbar("Structuring", self.window, 0, len(self.CV2_Structuring) - 1, self._positionB)
+		cv2.createTrackbar("Structur", self.window, 0, len(self.CV2_Structuring) - 1, self._positionB)
 		cv2.createTrackbar("MORPH", self.window, 0, len(self.CV2_MORPH)-1, self._positionC)
 
 	def _positionA(self, position):
@@ -216,14 +217,72 @@ class morphologyEx(Trackbar):
 		return self.dstImg
 	
 	
+# 6 findContours类
+class findContours(Trackbar):
 	
+	CV2_RETR = ['cv2.RETR_EXTERNAL', 'cv2.RETR_LIST', 'cv2.RETR_CCOMP', 'cv2.RETR_TREE']
+	
+	# 由于cv2.CHAIN_AOOROX以1开始，所以调用时要+1
+	CV2_CHAIN_APPROX = ['cv2.CHAIN_APPROX_NONE', 'cv2.CHAIN_APPROX_SIMPLE', 'cv2.CHAIN_APPROX_TC89_L1',
+						'cv2.CHAIN_APPROX_TC89_KCOS']
+	
+	
+	def __init__(self):
+		self.img = ''
+		self.dstImg = ''
+		self.gray = ''
+		self.RETR = 0
+		self.CHAIN_APPROX = 0
+		self.window = ''
+		self.point = (0, 0)
+		
+		
+		
+	def createTrackbar(self, window, img, isGray=False):
+		self.window = window
+		self.img = img
+		self.dstImg = np.zeros(np.shape(img), dtype=np.uint8)
+		if isGray:
+			self.gray = img
+		else:
+			self._cvtColor()
+		
+		cv2.createTrackbar('RETR', self.window, 0, len(self.CV2_RETR) - 1, self.positionA)
+		cv2.createTrackbar('CHAIN_APPROX', self.window, 0, len(self.CV2_CHAIN_APPROX) - 1, self.positionB)
+		
+	
+	def positionA(self, position):
+		self.RETR = position
+		self._callback()
+	
+	def positionB(self, position):
+		self.CHAIN_APPROX = position
+		self._callback()
+	
+	def _callback(self):
+		contours, heriachy = cv2.findContours(self.gray.copy(), self.RETR, self.CHAIN_APPROX + 1)
+		for contour in enumerate(contours):
+			cv2.drawContours(self.dstImg, contour, 1, (255, 255, 255), 2)
+		cv2.imshow(self.window, self.dstImg)
+	
+	def _color(self):
+		return random.randint(0, 255)
+	
+	def _cvtColor(self):
+		self.gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
+	
+	def getInfo(self):
+		return (self.CV2_RETR[self.RETR], self.CV2_CHAIN_APPROX[self.CHAIN_APPROX])
+	
+	def dst(self):
+		return self.dstImg
 	
 	
 	
 	
 	
 if __name__ == "__main__":
-	i = 6
+	i = 7
 	
 	if i == 0:
 		# 测试Trackbar类
@@ -259,10 +318,10 @@ if __name__ == "__main__":
 	if i == 3:
 		# 测试ThresholdTrackbar GaussianBlur类联动
 		img = cv2.imread("img/1.jpg", 0)
-		cv2.namedWindow("threshold", cv2.WINDOW_NORMAL, True)
+		cv2.namedWindow("threshold", cv2.WINDOW_NORMAL)
 		cv2.imshow("threshold", img)
 		threshold = Threshold()
-		threshold.createTrackbar("threshold", img)
+		threshold.createTrackbar("threshold", img, True)
 		cv2.waitKey(0)
 		cv2.destroyAllWindows()
 		print(threshold.getInfo())
@@ -307,13 +366,14 @@ if __name__ == "__main__":
 	
 	
 	if i == 6:
-		# 测试 morphologyEx类
+		#6 测试 morphologyEx类
 		# CV2_MORPH = [cv2.MORPH_ERODE, cv2.MORPH_DILATE, cv2.MORPH_OPEN, cv2.MORPH_CLOSE, cv2.MORPH_GRADIENT,
 		# 			 cv2.MORPH_TOPHAT, cv2.MORPH_BLACKHAT]
 		# print(CV2_MORPH[  len(CV2_MORPH) - 1  ])
 		#
 		# print(cv2.MORPH_RECT, cv2.MORPH_CROSS, cv2.MORPH_ELLIPSE)
-		img = cv2.imread('img/1.jpg', 1)
+		
+		img = cv2.imread('img/1.jpg')
 		cv2.namedWindow('morph', cv2.WINDOW_NORMAL)
 		cv2.imshow('morph', img)
 		morph = morphologyEx()
@@ -321,3 +381,30 @@ if __name__ == "__main__":
 		cv2.waitKey(0)
 		cv2.destroyAllWindows()
 		print(morph.getInfo())
+		
+		
+	if i == 7:
+		#7 测试findContours类 与 threshold类联动
+		# CV2_RETR = [cv2.RETR_EXTERNAL, cv2.RETR_LIST, cv2.RETR_CCOMP, cv2.RETR_TREE]
+		# CV2_CHAIN_APPROX = [cv2.CHAIN_APPROX_NONE, cv2.CHAIN_APPROX_SIMPLE, cv2.CHAIN_APPROX_TC89_L1, cv2.CHAIN_APPROX_TC89_KCOS]
+		# print(CV2_RETR)
+		# print(CV2_CHAIN_APPROX)
+		
+		img = cv2.imread("img/1.jpg", 0)
+		cv2.namedWindow("threshold", cv2.WINDOW_NORMAL)
+		cv2.imshow("threshold", img)
+		threshold = Threshold()
+		threshold.createTrackbar("threshold", img, True)
+		cv2.waitKey(0)
+		cv2.destroyAllWindows()
+		print(threshold.getInfo())
+		
+		
+		cv2.namedWindow('findContours', cv2.WINDOW_NORMAL)
+		cv2.imshow('findContours', threshold.dst())
+		fc = findContours()
+		fc.createTrackbar('findContours', threshold.dst(), True)
+		cv2.waitKey(0)
+		cv2.destroyAllWindows()
+		print(fc.getInfo())
+		
